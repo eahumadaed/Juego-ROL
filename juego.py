@@ -40,7 +40,7 @@ class Juego:
                 #    break
 
     def preguntar_si_continuar(self):
-        respuesta = input("¿Deseas continuar jugando?\n1: Si\n2: NO\n")
+        respuesta = input("¿Deseas continuar jugando?\n1. Si\n2. No\n")
         return respuesta.strip().lower() == '1'
 
     def combate(self):
