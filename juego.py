@@ -1,6 +1,8 @@
 from personaje import Personaje
 import random
 
+nombres_orcos = ["Azog","Gorbag","Shagrat","Grishnákh","Grommash Hellscream","Thrall","Gul'dan","Blackhand","Kargath Bladefist","Orgrim Doomhammer"]
+
 class Juego:
     def __init__(self):
         self.jugador = None
@@ -14,8 +16,8 @@ class Juego:
         self.nuevo_orco()
 
     def nuevo_orco(self):
-        self.orco = Personaje("Orco")
-        print("¡Ha aparecido un Orco!")
+        self.orco = Personaje(random.choice(nombres_orcos))
+        print("-"*15,"\n","¡Ha aparecido un Orco!")
         self.jugador.mostrar_estado()
         self.orco.mostrar_estado()
 
@@ -52,13 +54,15 @@ class Juego:
             print("¡Oh no! ¡El orco te ha ganado!\n¡Has perdido 30 puntos de experiencia!")
             self.jugador.actualizar_estado(-30)
             self.orco.actualizar_estado(50)
-            self.vidas -= 1
+            
             
             if self.preguntar_si_continuar() and self.vidas > 0:
+                self.vidas -= 1
                 print(f"Te quedan {self.vidas} vidas")
                 self.nuevo_orco()
             else:
                 print("Fin del juego. Gracias por jugar.")
+                exit()
         self.jugador.mostrar_estado()
         self.orco.mostrar_estado()
         #if self.preguntar_si_continuar():
